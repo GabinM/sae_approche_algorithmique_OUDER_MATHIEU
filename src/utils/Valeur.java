@@ -68,6 +68,18 @@ public class Valeur {
         return this.valeur.get(nom);
     }
 
+    public List<String> calculerChemin(String destination){
+        ArrayList<String> res = new ArrayList<>();
+        res.add(0,destination)
+        String parent = this.getParent(destination);
+        while(parent != null){
+            res.add(0,parent);
+            parent = this.getParent(parent);
+        }
+        res.add(0,parent);
+        return res;
+    }
+
     /**
      * retourne une chaine qui affiche le contenu
      * - par noeud stocke
