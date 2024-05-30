@@ -72,13 +72,13 @@ public class Valeur {
 
     public List<String> calculerChemin(String destination){
         ArrayList<String> res = new ArrayList<>();
-        res.addFirst(destination);
+        res.add(0,destination);
         String parent = this.getParent(destination);
         while(parent != null){
-            res.addFirst(parent);
+            res.add(0,parent);
             parent = this.getParent(parent);
         }
-        res.addFirst(parent);
+        res.add(0,parent);
         return res;
     }
 

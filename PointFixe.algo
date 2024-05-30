@@ -3,7 +3,8 @@ fonction PointFixe(Graphe g InOut, Noeud depart) :
 début :
     idDepart <- 0
         tant que idDepart < longueur(g.listeNoeuds())-1 et g.listeNoeuds()[idDepart] != depart faire :
-            idDepart <- idDepart + 1
+            idDe
+    part <- idDepart + 1
     fpour
     j <- 0
     g.valeurs[idDepart].valeur <- 0
