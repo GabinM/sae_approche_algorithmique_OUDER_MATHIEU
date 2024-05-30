@@ -25,24 +25,34 @@ public class GrapheListe implements Graphe {
     };
 
     public List<Arc> suivants(String n) {
+        if (this.adjacence.get(this.getIndice(n)).getArcs().isEmpty()) {
+            throw new IllegalArgumentException("Noeud sans suivants");
+        }
         return this.adjacence.get(this.getIndice(n)).getArcs();
     };
 
     public void ajouterArc(String depart, String destination, double cout) {
 
-        if (this.getIndice(depart) == -1) { // check si le noeud départ existe et l'initialise
-            this.noeuds.add(depart);
-            this.adjacence.add(new Arcs(depart));
-
+    int indiceDepart = this.getIndice(depart);
+    if (indiceDepart != -1) { // Si le noeud de départ existe déjà
+        for (Arc arc : this.adjacence.get(indiceDepart).getArcs()) { // Parcourir tous les arcs du noeud de départ
+            if (arc.getDest().equals(destination)) { // Si un arc vers le noeud de destination existe déjà
+                throw new IllegalArgumentException("L'arc existe déjà");
+            }
         }
-        if (this.getIndice(destination) == -1) { // check si le noeud destination existe et l'initialise
-            this.noeuds.add(destination);
-            this.adjacence.add(new Arcs(destination));
-        }
-
-        this.adjacence.get(this.getIndice(depart)).ajouterArc(new Arc(destination, cout)); // ajoute le nouvel arc entre départ et
-                                                                            // destination
     }
+
+    if (indiceDepart == -1) { // check si le noeud départ existe et l'initialise
+        this.noeuds.add(depart);
+        this.adjacence.add(new Arcs(depart));
+    }
+    if (this.getIndice(destination) == -1) { // check si le noeud destination existe et l'initialise
+        this.noeuds.add(destination);
+        this.adjacence.add(new Arcs(destination));
+    }
+
+    this.adjacence.get(this.getIndice(depart)).ajouterArc(new Arc(destination, cout)); // ajoute le nouvel arc entre départ et destination
+}
 
     public String toString() {
         StringBuffer sb = new StringBuffer("--------------------------------------\n");
