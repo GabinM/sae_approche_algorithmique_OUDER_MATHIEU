@@ -1,14 +1,16 @@
+package utils;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GrapheListe implements Graphe {
 
-    private ArrayList<String> noeuds;
-    private ArrayList<Arcs> adjacence;
+    private final ArrayList<String> noeuds;
+    private final ArrayList<Arcs> adjacence;
 
-    GrapheListe() {
-        this.noeuds = new ArrayList<String>();
-        this.adjacence = new ArrayList<Arcs>();
+    public GrapheListe() {
+        this.noeuds = new ArrayList<>();
+        this.adjacence = new ArrayList<>();
     }
 
     public int getIndice(String n) {
@@ -22,14 +24,14 @@ public class GrapheListe implements Graphe {
 
     public List<String> listeNoeuds() {
         return this.noeuds;
-    };
+    }
 
     public List<Arc> suivants(String n) {
         if (this.adjacence.get(this.getIndice(n)).getArcs().isEmpty()) {
             throw new IllegalArgumentException("Noeud sans suivants");
         }
         return this.adjacence.get(this.getIndice(n)).getArcs();
-    };
+    }
 
     public void ajouterArc(String depart, String destination, double cout) {
 
@@ -55,7 +57,7 @@ public class GrapheListe implements Graphe {
     }
 
     public String toString() {
-        StringBuffer sb = new StringBuffer("--------------------------------------\n");
+        StringBuilder sb = new StringBuilder("--------------------------------------\n");
         for (Arcs arcList : adjacence) {
             sb.append(arcList.getNom());
             sb.append(" -> ");

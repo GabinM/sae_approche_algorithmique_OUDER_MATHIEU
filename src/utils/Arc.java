@@ -1,18 +1,17 @@
-class Arc {
+package utils;
 
-    private String dest;
-    private double cout;
+public class Arc {
 
-    Arc(String d, double c){
+    private final String dest;
+    private final double cout;
+
+    public Arc(String d, double c){
         if (c < 0) {
             throw new IllegalArgumentException("Cout négatif");
         }
         this.dest = d;
-        if (c < 0){
-            this.cout = -1*c;
-        } else {
-            this.cout = c;
-        }  
+        this.cout = Math.abs(c);
+
     }
 
     public String getDest(){

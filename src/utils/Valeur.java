@@ -1,7 +1,7 @@
-import java.util.ArrayList;
+package utils;
+
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.List;
 
 /**
  * Classe fournie, permet de stocker des valeurs associées au noeud et des parents

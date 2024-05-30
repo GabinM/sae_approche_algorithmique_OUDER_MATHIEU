@@ -1,14 +1,16 @@
+package utils;
+
 import java.util.List;
 import java.util.ArrayList;
 
 public class Arcs {
     
-    private String nom; //nom du noeud
-    private List<Arc> arcs; //liste des arcs
+    private final String nom; //nom du noeud
+    private final List<Arc> arcs; //liste des arcs
 
-    Arcs(String n){
+    public Arcs(String n){
         this.nom = n; 
-        this.arcs = new ArrayList<Arc>();
+        this.arcs = new ArrayList<>();
     }
 
     public void ajouterArc(Arc a){
