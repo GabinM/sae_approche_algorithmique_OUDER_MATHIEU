@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -70,13 +72,13 @@ public class Valeur {
 
     public List<String> calculerChemin(String destination){
         ArrayList<String> res = new ArrayList<>();
-        res.add(0,destination)
+        res.addFirst(destination);
         String parent = this.getParent(destination);
         while(parent != null){
-            res.add(0,parent);
+            res.addFirst(parent);
             parent = this.getParent(parent);
         }
-        res.add(0,parent);
+        res.addFirst(parent);
         return res;
     }
 
