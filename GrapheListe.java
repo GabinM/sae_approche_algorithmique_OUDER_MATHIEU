@@ -6,6 +6,11 @@ public class GrapheListe implements Graphe{
     private ArrayList<String> noeuds;
     private ArrayList<Arcs> adjacence;
 
+    GrapheListe(){
+        this.noeuds = new ArrayList<String>();
+        this.adjacence = new ArrayList<Arcs>();
+    }
+
     public int getIndice(String n){
         for(int i = 0; i < this.noeuds.size(); i++){
             if(this.noeuds.get(i).equals(n)){
