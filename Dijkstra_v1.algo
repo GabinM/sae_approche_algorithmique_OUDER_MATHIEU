@@ -1,4 +1,4 @@
-fonction pointFixe(Graphe g InOut, Noeud depart) :
+fonction Dijkstra_v1(Graphe g InOut, Noeud depart) : // modifier après pour inclure une liste de points déjà vus pour éviter une boucle infinie
 
 début :
 
@@ -14,9 +14,7 @@ début :
 
         j <- 0
 
-        g.valeurs[j].valeur <- 0
-
-        mettre départ à zéro (on verra après)
+        g.valeurs[idDepart].valeur <- 0
 
         pour j de 0 a longueur(hg.valeurs)-1 faire :
 
@@ -41,13 +39,13 @@ début :
 
             fsi
 
-            pointFixe( g, g.ListeNoeuds[i])
+            Dijkstra_v1( g, g.ListeNoeuds[i])
 
         fpour
 
     fsi
 
-fin pointFixe()
+fin Dijkstra_v1()
 
 
 ======= Lexique =======
