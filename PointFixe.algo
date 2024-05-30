@@ -1,0 +1,24 @@
+fonction pointFixe(Graphe g InOut, Noeud depart) :
+
+début :
+
+    si longueur(g.suivants(depart)) != 0 alors :
+
+        i <- 0
+
+        pour i de 0 à longueur(g.suivants(depart))-1 faire :
+
+            parent <-
+
+            si g.valeurs[i].valeur
+
+        fpour
+
+
+
+    fsi
+
+    
+
+
+fin pointFixe()
