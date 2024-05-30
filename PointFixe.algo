@@ -2,15 +2,25 @@ fonction pointFixe(Graphe g InOut, Noeud depart) :
 
 début :
 
-    si longueur(g.suivants(depart)) != 0 alors :
+    idDepart <- 0
 
-        i <- 0
+        tant que idDepart < longueur(g.listeNoeuds())-1 et g.listeNoeuds()[idDepart] != depart faire :
 
-        pour i de 0 à longueur(g.suivants(depart))-1 faire :
+            idDepart <- idDepart + 1
 
-            parent <-
+    fpour
 
-            si g.valeurs[i].valeur
+    si g.valeurs[depart].valeur = null alors :
+
+        j <- 0
+
+        g.valeurs[j].valeur <- 0
+
+        mettre départ à zéro (on verra après)
+
+        pour j de 0 a longueur(hg.valeurs)-1 faire :
+
+            g.valeurs[j].valeur <- +∞
 
         fpour
 
@@ -18,7 +28,30 @@ début :
 
     fsi
 
-    
+    si longueur(g.suivants(depart)) != 0 alors :
 
+        i <- 0
+
+        pour i de 0 à longueur(g.suivants(depart))-1 faire :
+
+            si g.valeurs[i].valeur > g.valeurs[idDepart].valeur + g.suivants(depart)[i].getCout() :
+
+                g.valeurs[i].valeur <- g.valeurs[idDepart].valeur + g.suivants(depart)[i].getCout()
+                g.valeurs[i].parent <- depart
+
+            fsi
+
+            pointFixe( g, g.ListeNoeuds[i])
+
+        fpour
+
+    fsi
 
 fin pointFixe()
+
+
+======= Lexique =======
+
+j : entier, variable pour tenir la première boucle à jour et  initialiser les valeurs du graphe à +∞
+i : entier, variable pour tenir la deuxième boucle à jour et sélectionner les noeuds enfants du noeus de départ
+idDepart : entier, identificateur du noeud de départ
