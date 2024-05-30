@@ -27,33 +27,45 @@ public class GrapheListe implements Graphe {
     }
 
     public List<Arc> suivants(String n) {
-        if (this.adjacence.get(this.getIndice(n)).getArcs().isEmpty()) {
-            throw new IllegalArgumentException("Noeud sans suivants");
+        int indice = this.getIndice(n);
+        if (indice == -1) {
+            throw new IllegalArgumentException("Le noeud " + n + " n'existe pas dans le graphe.");
         }
-        return this.adjacence.get(this.getIndice(n)).getArcs();
+        List<Arc> arcs = this.adjacence.get(indice).getArcs();
+        if (arcs.isEmpty()) {
+            throw new IllegalArgumentException("Le noeud " + n + " n'a pas de suivants.");
+        }
+        return arcs;
     }
 
     public void ajouterArc(String depart, String destination, double cout) {
+        if (depart.equals(destination)) {
+            throw new IllegalArgumentException("Le noeud de départ et le noeud de destination ne peuvent pas être les mêmes.");
+        }
 
         int indiceDepart = this.getIndice(depart);
-        if (indiceDepart != -1) { // Si le noeud de départ existe déjà
-            for (Arc arc : this.adjacence.get(indiceDepart).getArcs()) { // Parcourir tous les arcs du noeud de départ
-                if (arc.getDestination().equals(destination)) { // Si un arc vers le noeud de destination existe déjà
-                    throw new IllegalArgumentException("L'arc existe déjà");
+        int indiceDestination = this.getIndice(destination);
+
+        if (indiceDepart != -1) {
+            for (Arc arc : this.adjacence.get(indiceDepart).getArcs()) {
+                if (arc.getDestination().equals(destination)) {
+                    throw new IllegalArgumentException("L'arc existe déjà dans le graphe.");
                 }
             }
         }
 
-        if (indiceDepart == -1) { // check si le noeud départ existe et l'initialise
+        if (indiceDepart == -1) {
             this.noeuds.add(depart);
             this.adjacence.add(new Arcs(depart));
+            indiceDepart = this.noeuds.size() - 1;
         }
-        if (this.getIndice(destination) == -1) { // check si le noeud destination existe et l'initialise
+
+        if (indiceDestination == -1) {
             this.noeuds.add(destination);
             this.adjacence.add(new Arcs(destination));
         }
 
-        this.adjacence.get(this.getIndice(depart)).ajouterArc(new Arc(destination, cout)); // ajoute le nouvel arc entre départ et destination
+        this.adjacence.get(indiceDepart).getArcs().add(new Arc(destination, cout));
     }
 
     public String toString() {
