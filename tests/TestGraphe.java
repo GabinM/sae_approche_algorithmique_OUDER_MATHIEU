@@ -21,7 +21,7 @@ public class TestGraphe {
     @Test
     public void test_02_graphe_ajout_arc() {
         assertEquals(1, gL.suivants("a").size(), "Erreur lors de l'ajout d'un arc : le nombre de noeuds suivants ne correspond pas.");
-        assertEquals(7, gL.suivants("a").getFirst().getCout(), "Erreur lors de l'ajout d'un arc : le cout de l'arc ne correspond pas.");
+        assertEquals(7, gL.suivants("a").getFirst().getWeight(), "Erreur lors de l'ajout d'un arc : le cout de l'arc ne correspond pas.");
     }
 
     @Test

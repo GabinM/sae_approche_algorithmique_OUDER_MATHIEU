@@ -38,7 +38,7 @@ public class GrapheListe implements Graphe {
         int indiceDepart = this.getIndice(depart);
         if (indiceDepart != -1) { // Si le noeud de départ existe déjà
             for (Arc arc : this.adjacence.get(indiceDepart).getArcs()) { // Parcourir tous les arcs du noeud de départ
-                if (arc.getDest().equals(destination)) { // Si un arc vers le noeud de destination existe déjà
+                if (arc.getDestination().equals(destination)) { // Si un arc vers le noeud de destination existe déjà
                     throw new IllegalArgumentException("L'arc existe déjà");
                 }
             }
@@ -62,9 +62,9 @@ public class GrapheListe implements Graphe {
             sb.append(arcList.getNom());
             sb.append(" -> ");
             for (Arc arc : arcList.getArcs()) {
-                sb.append(arc.getDest());
+                sb.append(arc.getDestination());
                 sb.append("(");
-                sb.append(arc.getCout());
+                sb.append(arc.getWeight());
                 sb.append(") ");
             }
             sb.append("\n");

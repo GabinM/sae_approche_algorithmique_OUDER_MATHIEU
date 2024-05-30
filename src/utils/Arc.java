@@ -14,11 +14,11 @@ public class Arc {
 
     }
 
-    public String getDest(){
+    public String getDestination(){
         return this.dest;
     }
 
-    public double getCout(){
+    public double getWeight(){
         return this.cout;
     }
 
