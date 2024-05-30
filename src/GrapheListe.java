@@ -33,26 +33,26 @@ public class GrapheListe implements Graphe {
 
     public void ajouterArc(String depart, String destination, double cout) {
 
-    int indiceDepart = this.getIndice(depart);
-    if (indiceDepart != -1) { // Si le noeud de départ existe déjà
-        for (Arc arc : this.adjacence.get(indiceDepart).getArcs()) { // Parcourir tous les arcs du noeud de départ
-            if (arc.getDest().equals(destination)) { // Si un arc vers le noeud de destination existe déjà
-                throw new IllegalArgumentException("L'arc existe déjà");
+        int indiceDepart = this.getIndice(depart);
+        if (indiceDepart != -1) { // Si le noeud de départ existe déjà
+            for (Arc arc : this.adjacence.get(indiceDepart).getArcs()) { // Parcourir tous les arcs du noeud de départ
+                if (arc.getDest().equals(destination)) { // Si un arc vers le noeud de destination existe déjà
+                    throw new IllegalArgumentException("L'arc existe déjà");
+                }
             }
         }
-    }
 
-    if (indiceDepart == -1) { // check si le noeud départ existe et l'initialise
-        this.noeuds.add(depart);
-        this.adjacence.add(new Arcs(depart));
-    }
-    if (this.getIndice(destination) == -1) { // check si le noeud destination existe et l'initialise
-        this.noeuds.add(destination);
-        this.adjacence.add(new Arcs(destination));
-    }
+        if (indiceDepart == -1) { // check si le noeud départ existe et l'initialise
+            this.noeuds.add(depart);
+            this.adjacence.add(new Arcs(depart));
+        }
+        if (this.getIndice(destination) == -1) { // check si le noeud destination existe et l'initialise
+            this.noeuds.add(destination);
+            this.adjacence.add(new Arcs(destination));
+        }
 
-    this.adjacence.get(this.getIndice(depart)).ajouterArc(new Arc(destination, cout)); // ajoute le nouvel arc entre départ et destination
-}
+        this.adjacence.get(this.getIndice(depart)).ajouterArc(new Arc(destination, cout)); // ajoute le nouvel arc entre départ et destination
+    }
 
     public String toString() {
         StringBuffer sb = new StringBuffer("--------------------------------------\n");

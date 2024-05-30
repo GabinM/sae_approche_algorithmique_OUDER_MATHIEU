@@ -30,13 +30,21 @@ début :
 
         pour i de 0 à longueur(g.listeNoeuds())-1 faire :
 
-            si g.valeurs[i].valeur > g.valeurs[idDepart].valeur + g.suivants(depart)[i].getCout() :
+            k <- 0
 
-                g.valeurs[i].valeur <- g.valeurs[idDepart].valeur + g.suivants(depart)[i].getCout()
-                g.valeurs[i].parent <- depart
-                tourne <- vrai
+            pour k de 0 à longueur(g.listeNoeuds())-1 faire :
 
-            fsi
+                si euuuuh pfff vasy c'est bon
+
+                si g.valeurs[i].valeur > g.valeurs[idDepart].valeur + g.suivants(depart)[i].getCout() :
+
+                    g.valeurs[i].valeur <- g.valeurs[idDepart].valeur + g.suivants(depart)[i].getCout()
+                    g.valeurs[i].parent <- depart
+                    tourne <- vrai
+
+                fsi
+
+            fpour
 
         fpour
 
