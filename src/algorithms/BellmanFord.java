@@ -22,14 +22,17 @@ public class BellmanFord {
         }
         v.setValeur(depart,0);
 
-        for(int i = 1; i < tailleListe; i++){
-            for(Arc a : g.suivants(g.listeNoeuds().get(i))){
-                if((v.getValeur(a.getDestination()) + a.getWeight()) < v.getValeur(a.getDestination())){
-                    v.setValeur(a.getDestination(), v.getValeur(a.getDestination())+ a.getWeight());
-                    v.setParent(a.getDestination(),g.listeNoeuds().get(i));
+        for(int k = 0; k < tailleListe; k++){
+            for(int i = 0; i < tailleListe; i++){
+                for(Arc a : g.suivants(g.listeNoeuds().get(i))){
+                    if((v.getValeur((g.listeNoeuds().get(i))) + a.getWeight()) < v.getValeur(a.getDestination())){
+                        v.setValeur(a.getDestination(), (v.getValeur((g.listeNoeuds().get(i))) + a.getWeight()));
+                        v.setParent(a.getDestination(),g.listeNoeuds().get(i));
+                    }
                 }
             }
         }
+        
 
         return v;
 
