@@ -2,8 +2,18 @@ import utils.GrapheListe;
 import utils.Valeur;
 import algorithms.BellmanFord;
 
-class MainPointFixe {
+/**
+ * La classe MainPointFixe est le point d'entrée de l'application.
+ * Elle crée un graphe, exécute l'algorithme de Bellman-Ford sur ce graphe à partir d'un noeud spécifique,
+ * et affiche les chemins les plus courts de ce noeud à tous les autres noeuds du graphe.
+ */
+public class MainPointFixe {
 
+    /**
+     * Le point d'entrée de l'application.
+     *
+     * @param args Les arguments de la ligne de commande. Non utilisé dans cette application.
+     */
     public static void main(String[] args){
         GrapheListe gL = new GrapheListe();
 
@@ -19,8 +29,9 @@ class MainPointFixe {
 
         Valeur v = BellmanFord.resoudre(gL, "a");
 
-        for(int i = 0 ; i < gL.listeNoeuds().size(); i++){
-            System.out.println("point : " + gL.listeNoeuds().get(i) + " , poids :" + v.getValeur(gL.listeNoeuds().get(i)) + ", parent : " + v.getParent(gL.listeNoeuds().get(i)));
+        for (String node : gL.listeNoeuds()) {
+            System.out.println("Shortest path from a to " + node + ": " + v.calculerChemin(node));
+            System.out.println("point : " + node + " , poids :" + v.getValeur(node) + ", parent : " + v.getParent(node));
         }
     }
 }

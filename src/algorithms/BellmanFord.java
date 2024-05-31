@@ -2,8 +2,8 @@ package algorithms;
 
 import utils.Graphe;
 import utils.Valeur;
-import utils.Graphe;
 import utils.Arc;
+import java.util.List;
 
 public class BellmanFord {
 
@@ -24,7 +24,13 @@ public class BellmanFord {
 
         for(int k = 0; k < tailleListe; k++){
             for(int i = 0; i < tailleListe; i++){
-                for(Arc a : g.suivants(g.listeNoeuds().get(i))){
+                List<Arc> enfants;
+                try{
+                    enfants = g.suivants(g.listeNoeuds().get(i));
+                } catch (IllegalArgumentException e) {
+                    return v;
+                }
+                for(Arc a : enfants){
                     if((v.getValeur((g.listeNoeuds().get(i))) + a.getWeight()) < v.getValeur(a.getDestination())){
                         v.setValeur(a.getDestination(), (v.getValeur((g.listeNoeuds().get(i))) + a.getWeight()));
                         v.setParent(a.getDestination(),g.listeNoeuds().get(i));
@@ -32,7 +38,6 @@ public class BellmanFord {
                 }
             }
         }
-        
 
         return v;
 

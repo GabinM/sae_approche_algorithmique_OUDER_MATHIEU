@@ -1,8 +1,16 @@
 import utils.GrapheListe;
 
+/**
+ * La classe MainGraphes est le point d'entrée de l'application.
+ * Elle crée un graphe et affiche sa représentation sous forme de chaîne de caractères.
+ */
 public class MainGraphes {
-    //une zone de test
 
+    /**
+     * Le point d'entrée de l'application.
+     *
+     * @param args Les arguments de la ligne de commande. Non utilisé dans cette application.
+     */
     public static void main(String[] args){
         GrapheListe gL = new GrapheListe();
 
